@@ -103,3 +103,4 @@ go test -v
 - [x] Use relational database: PostgreSQL.
 - [x] API documentation.
 - [x] Use docker and docker-compose.
+- [x] Implement the unit test.
