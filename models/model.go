@@ -27,5 +27,3 @@ type Data struct {
 type ErrorMsg struct {
 	Message string `json:"message"`
 }
-
-// transaction_id, request_id, terminal_id, partner_object_id, amount_total, amount_original, commission_ps, commission_client, commission_provider, date_input, date_post, status, payment_type, payment_number, service_id, service, payee_id, payee_name, payee_bank_mfo, payee_bank_account, payment_narrative
