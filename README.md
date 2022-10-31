@@ -23,6 +23,7 @@ git clone https://github.com/esmira23/go-postgresql-docker.git
 Before running API server, you should build docker image and run it. Also you need to create database and use db/migration to create table.
 
 ```bash
+cd go-postgresql-docker
 # build and run docker-compose
 make build && make run
 # create db and migrate table
@@ -33,7 +34,6 @@ Now you can build and run project.
 
 ```bash
 # build and run
-cd go-postgresql-docker
 go build
 ./go-postgresql-docker
 
