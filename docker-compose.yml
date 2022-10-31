@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: postgres15
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret 
+      - POSTGRES_BD=golang-postgresql-docker
+      - POSTGRES_HOST_AUTH_METHOD:trust
+    
+  

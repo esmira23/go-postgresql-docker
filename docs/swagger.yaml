@@ -1,0 +1,230 @@
+basePath: /api
+definitions:
+  models.Data:
+    properties:
+      amount_original:
+        type: number
+      amount_total:
+        type: number
+      commission_client:
+        type: number
+      commission_provider:
+        type: number
+      commission_ps:
+        type: number
+      date_input:
+        type: string
+      date_post:
+        type: string
+      partner_object_id:
+        type: integer
+      payee_bank_account:
+        type: string
+      payee_bank_mfo:
+        type: integer
+      payee_id:
+        type: integer
+      payee_name:
+        type: string
+      payment_narrative:
+        type: string
+      payment_number:
+        type: string
+      payment_type:
+        type: string
+      request_id:
+        type: integer
+      service:
+        type: string
+      service_id:
+        type: integer
+      status:
+        type: string
+      terminal_id:
+        type: integer
+      transaction_id:
+        type: integer
+    type: object
+  models.ErrorMsg:
+    properties:
+      message:
+        type: string
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  description: API Server
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Swagger Go API
+  version: "1.0"
+paths:
+  /all:
+    get:
+      description: Get all data
+      operationId: all
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Data'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMsg'
+      summary: Get All
+      tags:
+      - EndPoints
+  /date:
+    get:
+      description: Get data by date of post
+      operationId: date
+      parameters:
+      - description: Date from YYYY-MM-DD
+        in: query
+        name: from
+        required: true
+        type: string
+      - description: Date to YYYY-MM-DD
+        in: query
+        name: to
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Data'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMsg'
+      summary: Get By Post Date
+      tags:
+      - EndPoints
+  /payment_narrative/{narrative}:
+    get:
+      description: Get data by payment narrative
+      operationId: payment-narrative
+      parameters:
+      - description: Partially specified payment narrative
+        in: path
+        name: narrative
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Data'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMsg'
+      summary: Get By Payment Narrative
+      tags:
+      - EndPoints
+  /payment_type/{type}:
+    get:
+      description: get data by payment type
+      operationId: payment-type
+      parameters:
+      - description: Payment Type (card/cash)
+        in: path
+        name: type
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Data'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMsg'
+      summary: Get By Payment Type
+      tags:
+      - EndPoints
+  /status/{status}:
+    get:
+      description: get data by status
+      operationId: status
+      parameters:
+      - description: Status (accepted/declined)
+        in: path
+        name: status
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Data'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMsg'
+      summary: Get By Status
+      tags:
+      - EndPoints
+  /terminal:
+    get:
+      description: Get data by terminal id
+      operationId: terminal-id
+      parameters:
+      - description: 'Terminal ID. Pattern: id_1,id_2,..,id_n'
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Data'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMsg'
+      summary: Get By Terminal Id
+      tags:
+      - EndPoints
+  /transaction/{id}:
+    get:
+      description: get data by transaction id
+      operationId: transaction-id
+      parameters:
+      - description: Transaction ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Data'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorMsg'
+      summary: Get By Transaction Id
+      tags:
+      - EndPoints
+swagger: "2.0"
