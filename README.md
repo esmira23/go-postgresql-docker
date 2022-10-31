@@ -46,24 +46,24 @@ go build
 ├── db/migration                        // migration for database
 │   ├── 000001_init_schema.down.sql
 │   └── 000001_init_schema.up.sql
-├── docs                                // Swagger
+├── docs                                // swagger
 │   ├── docs.go
 │   ├── swagger.json
 │   └── swagger.yaml
 ├── config
-│   └── config.go                       // Configuration for database
+│   └── config.go                       // configuration for database
 ├── controllers
-│   └── controller.go                   // Controllers for application
+│   └── controller.go                   // controllers for application
 ├── csvparser
-│   ├── csvparser.go                    // CSV parser
+│   ├── csvparser.go                    // csv parser
 │   └── example.csv                     // csv data
 ├── routers
-│   └── router.go                       // Routers for application
+│   └── router.go                       // routers for application
 ├── models
-│   └── model.go                        // Models for application
+│   └── model.go                        // models for application
 ├── Makefile
 ├── docker-compose.yml                  // docker compose file
-├── main_test.go                        // Unit tests
+├── main_test.go                        // unit tests
 └── main.go
 ```
 
