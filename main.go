@@ -31,8 +31,6 @@ func main() {
 	tx := db.MustBegin()
 	csvparser.InserData(tx)
 
-	// routers.ExampleRouter(router)
-
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	router.Run(":8000")
 
