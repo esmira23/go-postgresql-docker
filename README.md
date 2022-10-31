@@ -1,13 +1,13 @@
 # Golang REST API
 
-RESTful API with Go and PostgreSQL using Docker.
+Go RESTful API with PostgreSQL and Docker.
 
 ## Preparing to launch a project
 
 - Install [Golang](https://golang.org/doc/install)
 - Install [Docker](https://docs.docker.com/get-docker/)
 - Install [Migrate](https://github.com/golang-migrate/migrate/blob/master/cmd/migrate/README.md)
-- Install Postgres:
+- Install Postgres
 
 ```bash
 docker pull postgres:15-alpine
@@ -17,7 +17,7 @@ docker pull postgres:15-alpine
 
 ```bash
 # download this project
-go get github.com/esmira23/go-postgres-docker
+git clone https://github.com/esmira23/go-postgresql-docker.git
 ```
 
 Before running API server, you should build docker image and run it. Also you need to create database and use db/migration to create table.
