@@ -43,27 +43,27 @@ go build
 ## Project tree
 
 ```
-├── db/migration            // migration for database
+├── db/migration                        // migration for database
 │   ├── 000001_init_schema.down.sql
 │   └── 000001_init_schema.up.sql
-├── docs
+├── docs                                // Swagger
 │   ├── docs.go
 │   ├── swagger.json
 │   └── swagger.yaml
 ├── config
-│   └── config.go           // Configuration for database
+│   └── config.go                       // Configuration for database
 ├── controllers
-│   └── controller.go       // Controllers for application
+│   └── controller.go                   // Controllers for application
 ├── csvparser
-│   ├── csvparser.go        // CSV parser
-│   └── example.csv         // csv data
+│   ├── csvparser.go                    // CSV parser
+│   └── example.csv                     // csv data
 ├── routers
-│   └── router.go           // Routers for application
+│   └── router.go                       // Routers for application
 ├── models
-│   └── model.go            // Models for application
+│   └── model.go                        // Models for application
 ├── Makefile
-├── docker-compose.yml      // docker compose file
-├── main_test.go            // Unit tests
+├── docker-compose.yml                  // docker compose file
+├── main_test.go                        // Unit tests
 └── main.go
 ```
 
