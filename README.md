@@ -69,15 +69,15 @@ go build
 
 ## API
 
-| Method | Path                                 | Description                                 |
-| ------ | ------------------------------------ | ------------------------------------------- |
-| `GET`  | /api/all                             | Get all data                                |
-| `GET`  | /api/transaction/:id                 | Get data by transaction id                  |
-| `GET`  | /api/terminal                        | Get data by terminal id (allow several ids) |
-| `GET`  | /api/status/:status                  | Get data by status (accepted/declined)      |
-| `GET`  | /api/payment_type/:type              | Get data by payment type (cash/card)        |
-| `GET`  | /api/date/?from=date_from&to=date_to | Get data by date_post by periods (from/to)  |
-| `GET`  | /api/payment_narrative/:narrative    | Get data by partially payment_narrative     |
+| Method | Path                                | Description                                 |
+| ------ | ----------------------------------- | ------------------------------------------- |
+| `GET`  | /api/all                            | Get all data                                |
+| `GET`  | /api/transaction/:id                | Get data by transaction id                  |
+| `GET`  | /api/terminal?id=id_1,id_2,..,id_n  | Get data by terminal id (allow several ids) |
+| `GET`  | /api/status/:status                 | Get data by status (accepted/declined)      |
+| `GET`  | /api/payment_type/:type             | Get data by payment type (cash/card)        |
+| `GET`  | /api/date?from=date_from&to=date_to | Get data by date_post by periods (from/to)  |
+| `GET`  | /api/payment_narrative/:narrative   | Get data by partially payment_narrative     |
 
 ## {•••} Swagger API
 
