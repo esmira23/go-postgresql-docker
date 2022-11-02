@@ -37,7 +37,7 @@ Now you can build and run project.
 go build
 ./go-postgresql-docker
 
-# API Endpoint : http://127.0.0.1:8000
+# API Endpoint : http://localhost:8000
 ```
 
 ## Project tree
@@ -81,7 +81,7 @@ go build
 
 ## {•••} Swagger API
 
-Go to API Docs page: http://127.0.0.1:8000/swagger/index.html
+Go to API Docs page: http://localhost:8000/swagger/index.html
 ![Swagger](docs/Swagger.png)
 
 ## Run all the Unit test cases
