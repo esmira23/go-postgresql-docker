@@ -27,7 +27,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "EndPoints"
+                    "Get Data"
                 ],
                 "summary": "Get All",
                 "operationId": "all",
@@ -54,7 +54,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "EndPoints"
+                    "Get Data"
                 ],
                 "summary": "Get By Post Date",
                 "operationId": "date",
@@ -97,7 +97,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "EndPoints"
+                    "Get Data"
                 ],
                 "summary": "Get By Payment Narrative",
                 "operationId": "payment-narrative",
@@ -133,7 +133,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "EndPoints"
+                    "Get Data"
                 ],
                 "summary": "Get By Payment Type",
                 "operationId": "payment-type",
@@ -162,6 +162,27 @@ const docTemplate = `{
                 }
             }
         },
+        "/post_data": {
+            "post": {
+                "description": "Post all data",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Upload Data"
+                ],
+                "summary": "Post All",
+                "operationId": "post",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ErrorMsg"
+                        }
+                    }
+                }
+            }
+        },
         "/status/{status}": {
             "get": {
                 "description": "get data by status",
@@ -169,7 +190,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "EndPoints"
+                    "Get Data"
                 ],
                 "summary": "Get By Status",
                 "operationId": "status",
@@ -205,7 +226,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "EndPoints"
+                    "Get Data"
                 ],
                 "summary": "Get By Terminal Id",
                 "operationId": "terminal-id",
@@ -241,7 +262,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "EndPoints"
+                    "Get Data"
                 ],
                 "summary": "Get By Transaction Id",
                 "operationId": "transaction-id",

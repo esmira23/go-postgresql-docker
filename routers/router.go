@@ -10,6 +10,7 @@ func SetUpRouter() *gin.Engine {
 
 	api := router.Group("/api")
 	{
+		api.POST("/post_data", controllers.PostData)
 		api.GET("/all", controllers.GetAll)
 		api.GET("/transaction/:id", controllers.GetByTransactionId)
 		api.GET("/terminal", controllers.GetByTerminalId)

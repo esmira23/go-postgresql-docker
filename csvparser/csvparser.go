@@ -7,7 +7,6 @@ import (
 	"strconv"
 
 	"github.com/esmira23/go-postgresql-docker/models"
-	"github.com/jmoiron/sqlx"
 )
 
 func toInt(value string) int {
@@ -29,10 +28,14 @@ func csvParser() []models.Data {
 	}
 
 	reader := csv.NewReader(csvFile)
-	rows, _ := reader.ReadAll()
+	allData, err := reader.ReadAll()
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	var data []models.Data
-	for _, row := range rows[1:] {
+	for _, row := range allData[1:] {
 		data = append(data, models.Data{
 			TransactionId:      toInt(row[0]),
 			RequestId:          toInt(row[1]),
@@ -59,17 +62,6 @@ func csvParser() []models.Data {
 	}
 
 	return data
-}
-
-func InserData(tx *sqlx.Tx) {
-
-	csvdata := csvParser()
-
-	for i := 0; i < len(csvdata); i++ {
-		tx.MustExec("INSERT INTO example VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) ON CONFLICT (transaction_id) DO NOTHING", csvdata[i].TransactionId, csvdata[i].RequestId, csvdata[i].TerminalId, csvdata[i].PartnerObjectId, csvdata[i].AmountTotal, csvdata[i].AmountOriginal, csvdata[i].CommissionPS, csvdata[i].CommissionClient, csvdata[i].CommissionProvider, csvdata[i].DateInput, csvdata[i].DatePost, csvdata[i].Status, csvdata[i].PaymentType, csvdata[i].PaymentNumber, csvdata[i].ServiceId, csvdata[i].Service, csvdata[i].PayeeId, csvdata[i].PayeeName, csvdata[i].PayeeBankMfo, csvdata[i].PayeeBankAccount, csvdata[i].PaymentNarrative)
-	}
-
-	tx.Commit()
 }
 
 func GetCSVData() []models.Data {

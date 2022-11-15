@@ -1,8 +1,7 @@
 package main
 
 import (
-	"github.com/esmira23/go-postgresql-docker/config"
-	"github.com/esmira23/go-postgresql-docker/csvparser"
+	"log"
 
 	_ "github.com/esmira23/go-postgresql-docker/docs"
 	"github.com/esmira23/go-postgresql-docker/routers"
@@ -24,14 +23,12 @@ func main() {
 
 	gin.SetMode(gin.ReleaseMode)
 	router := routers.SetUpRouter()
-	db := config.ConnectDB()
-
-	config.DB = db
-
-	tx := db.MustBegin()
-	csvparser.InserData(tx)
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	router.Run(":8000")
+	err := router.Run(":8000")
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 }

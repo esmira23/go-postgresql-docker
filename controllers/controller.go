@@ -2,12 +2,34 @@ package controllers
 
 import (
 	"github.com/esmira23/go-postgresql-docker/config"
+	"github.com/esmira23/go-postgresql-docker/csvparser"
 	"github.com/esmira23/go-postgresql-docker/models"
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary Post All
+// @Tags Upload Data
+// @Description Post all data
+// @ID post
+// @Produce json
+// @Success 200 {object} models.ErrorMsg
+// @Router /post_data [post]
+func PostData(c *gin.Context) {
+	config.ConnectDB()
+	tx := config.DB.MustBegin()
+
+	csvdata := csvparser.GetCSVData()
+
+	for i := 0; i < len(csvdata); i++ {
+		tx.MustExec("INSERT INTO example VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) ON CONFLICT (transaction_id) DO NOTHING", csvdata[i].TransactionId, csvdata[i].RequestId, csvdata[i].TerminalId, csvdata[i].PartnerObjectId, csvdata[i].AmountTotal, csvdata[i].AmountOriginal, csvdata[i].CommissionPS, csvdata[i].CommissionClient, csvdata[i].CommissionProvider, csvdata[i].DateInput, csvdata[i].DatePost, csvdata[i].Status, csvdata[i].PaymentType, csvdata[i].PaymentNumber, csvdata[i].ServiceId, csvdata[i].Service, csvdata[i].PayeeId, csvdata[i].PayeeName, csvdata[i].PayeeBankMfo, csvdata[i].PayeeBankAccount, csvdata[i].PaymentNarrative)
+	}
+	tx.Commit()
+
+	c.JSON(200, gin.H{"message": "data uploaded"})
+}
+
 // @Summary Get All
-// @Tags EndPoints
+// @Tags Get Data
 // @Description Get all data
 // @ID all
 // @Produce json
@@ -15,6 +37,8 @@ import (
 // @Failure 404 {object} models.ErrorMsg
 // @Router /all [get]
 func GetAll(c *gin.Context) {
+	config.ConnectDB()
+
 	items := []models.Data{}
 
 	err := config.DB.Select(&items, "SELECT * FROM example")
@@ -27,7 +51,7 @@ func GetAll(c *gin.Context) {
 }
 
 // @Summary Get By Transaction Id
-// @Tags EndPoints
+// @Tags Get Data
 // @Description get data by transaction id
 // @ID transaction-id
 // @Produce json
@@ -36,6 +60,8 @@ func GetAll(c *gin.Context) {
 // @Failure 404 {object} models.ErrorMsg
 // @Router /transaction/{id} [get]
 func GetByTransactionId(c *gin.Context) {
+	config.ConnectDB()
+
 	items := []models.Data{}
 	param := c.Param("id")
 	err := config.DB.Select(&items, "SELECT * FROM example WHERE transaction_id = $1", param)
@@ -48,7 +74,7 @@ func GetByTransactionId(c *gin.Context) {
 }
 
 // @Summary Get By Terminal Id
-// @Tags EndPoints
+// @Tags Get Data
 // @Description Get data by terminal id
 // @ID terminal-id
 // @Produce json
@@ -57,6 +83,8 @@ func GetByTransactionId(c *gin.Context) {
 // @Failure 404 {object} models.ErrorMsg
 // @Router /terminal [get]
 func GetByTerminalId(c *gin.Context) {
+	config.ConnectDB()
+
 	items := []models.Data{}
 	param := c.Query("id")
 
@@ -71,7 +99,7 @@ func GetByTerminalId(c *gin.Context) {
 }
 
 // @Summary Get By Status
-// @Tags EndPoints
+// @Tags Get Data
 // @Description get data by status
 // @ID status
 // @Produce json
@@ -80,6 +108,8 @@ func GetByTerminalId(c *gin.Context) {
 // @Failure 404 {object} models.ErrorMsg
 // @Router /status/{status} [get]
 func GetByStatus(c *gin.Context) {
+	config.ConnectDB()
+
 	items := []models.Data{}
 	param := c.Param("status")
 
@@ -93,7 +123,7 @@ func GetByStatus(c *gin.Context) {
 }
 
 // @Summary Get By Payment Type
-// @Tags EndPoints
+// @Tags Get Data
 // @Description get data by payment type
 // @ID payment-type
 // @Produce json
@@ -102,6 +132,8 @@ func GetByStatus(c *gin.Context) {
 // @Failure 404 {object} models.ErrorMsg
 // @Router /payment_type/{type} [get]
 func GetByPaymentType(c *gin.Context) {
+	config.ConnectDB()
+
 	items := []models.Data{}
 	param := c.Param("type")
 
@@ -115,7 +147,7 @@ func GetByPaymentType(c *gin.Context) {
 }
 
 // @Summary Get By Post Date
-// @Tags EndPoints
+// @Tags Get Data
 // @Description Get data by date of post
 // @ID date
 // @Produce json
@@ -125,6 +157,8 @@ func GetByPaymentType(c *gin.Context) {
 // @Failure 404 {object} models.ErrorMsg
 // @Router /date [get]
 func GetByDatePost(c *gin.Context) {
+	config.ConnectDB()
+
 	items := []models.Data{}
 	from := c.Query("from")
 	to := c.Query("to")
@@ -139,7 +173,7 @@ func GetByDatePost(c *gin.Context) {
 }
 
 // @Summary Get By Payment Narrative
-// @Tags EndPoints
+// @Tags Get Data
 // @Description Get data by payment narrative
 // @ID payment-narrative
 // @Produce json
@@ -148,6 +182,8 @@ func GetByDatePost(c *gin.Context) {
 // @Failure 404 {object} models.ErrorMsg
 // @Router /payment_narrative/{narrative} [get]
 func GetByPaymentNarrative(c *gin.Context) {
+	config.ConnectDB()
+
 	items := []models.Data{}
 	param := c.Param("narrative")
 

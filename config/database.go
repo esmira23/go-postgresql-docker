@@ -19,7 +19,7 @@ const (
 	sslmode  = "disable"
 )
 
-func ConnectDB() *sqlx.DB {
+func ConnectDB() {
 	psqconn := fmt.Sprintf("host = %s port=%s user=%s password=%s dbname=%s sslmode=%s", host, port, user, password, dbname, sslmode)
 	db, err := sqlx.Open("postgres", psqconn)
 
@@ -33,5 +33,5 @@ func ConnectDB() *sqlx.DB {
 		log.Fatal(err)
 	}
 
-	return db
+	DB = db
 }

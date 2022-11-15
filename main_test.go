@@ -14,14 +14,30 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestPostAll(t *testing.T) {
+
+	gin.SetMode(gin.ReleaseMode)
+	router := routers.SetUpRouter()
+	w := httptest.NewRecorder()
+	config.ConnectDB()
+
+	req, err := http.NewRequest("POST", "/api/post_data", nil)
+
+	if err != nil {
+		t.Errorf("Error creating a new request: %v", err)
+	}
+
+	router.ServeHTTP(w, req)
+	assert.Equal(t, http.StatusOK, w.Code)
+
+}
+
 func TestGetAll(t *testing.T) {
 
 	gin.SetMode(gin.ReleaseMode)
 	router := routers.SetUpRouter()
 	w := httptest.NewRecorder()
-
-	db := config.ConnectDB()
-	config.DB = db
+	config.ConnectDB()
 
 	csvdata := csvparser.GetCSVData()
 	byteData, _ := json.Marshal(csvdata)
@@ -45,9 +61,7 @@ func TestGetByTransactionID(t *testing.T) {
 	gin.SetMode(gin.ReleaseMode)
 	router := routers.SetUpRouter()
 	w := httptest.NewRecorder()
-
-	db := config.ConnectDB()
-	config.DB = db
+	config.ConnectDB()
 
 	req, err := http.NewRequest("GET", "/api/transaction/3", nil)
 
@@ -65,9 +79,7 @@ func TestGetByTerminalID(t *testing.T) {
 	gin.SetMode(gin.ReleaseMode)
 	router := routers.SetUpRouter()
 	w := httptest.NewRecorder()
-
-	db := config.ConnectDB()
-	config.DB = db
+	config.ConnectDB()
 
 	req, err := http.NewRequest("GET", "/api/terminal", nil)
 
@@ -89,9 +101,7 @@ func TestGetByStatus(t *testing.T) {
 	gin.SetMode(gin.ReleaseMode)
 	router := routers.SetUpRouter()
 	w := httptest.NewRecorder()
-
-	db := config.ConnectDB()
-	config.DB = db
+	config.ConnectDB()
 
 	req, err := http.NewRequest("GET", "/api/status/accepted", nil)
 
@@ -109,9 +119,7 @@ func TestGetByPaymentType(t *testing.T) {
 	gin.SetMode(gin.ReleaseMode)
 	router := routers.SetUpRouter()
 	w := httptest.NewRecorder()
-
-	db := config.ConnectDB()
-	config.DB = db
+	config.ConnectDB()
 
 	req, err := http.NewRequest("GET", "/api/payment_type/card", nil)
 
@@ -129,9 +137,7 @@ func TestGetByDate(t *testing.T) {
 	gin.SetMode(gin.ReleaseMode)
 	router := routers.SetUpRouter()
 	w := httptest.NewRecorder()
-
-	db := config.ConnectDB()
-	config.DB = db
+	config.ConnectDB()
 
 	req, err := http.NewRequest("GET", "/api/date", nil)
 	if err != nil {
@@ -153,9 +159,7 @@ func TestGetPaymentNarrative(t *testing.T) {
 	gin.SetMode(gin.ReleaseMode)
 	router := routers.SetUpRouter()
 	w := httptest.NewRecorder()
-
-	db := config.ConnectDB()
-	config.DB = db
+	config.ConnectDB()
 
 	req, err := http.NewRequest("GET", "/api/payment_narrative/27122", nil)
 	if err != nil {

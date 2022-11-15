@@ -77,7 +77,7 @@ paths:
             $ref: '#/definitions/models.ErrorMsg'
       summary: Get All
       tags:
-      - EndPoints
+      - Get Data
   /date:
     get:
       description: Get data by date of post
@@ -106,7 +106,7 @@ paths:
             $ref: '#/definitions/models.ErrorMsg'
       summary: Get By Post Date
       tags:
-      - EndPoints
+      - Get Data
   /payment_narrative/{narrative}:
     get:
       description: Get data by payment narrative
@@ -130,7 +130,7 @@ paths:
             $ref: '#/definitions/models.ErrorMsg'
       summary: Get By Payment Narrative
       tags:
-      - EndPoints
+      - Get Data
   /payment_type/{type}:
     get:
       description: get data by payment type
@@ -154,7 +154,21 @@ paths:
             $ref: '#/definitions/models.ErrorMsg'
       summary: Get By Payment Type
       tags:
-      - EndPoints
+      - Get Data
+  /post_data:
+    post:
+      description: Post all data
+      operationId: post
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ErrorMsg'
+      summary: Post All
+      tags:
+      - Upload Data
   /status/{status}:
     get:
       description: get data by status
@@ -178,7 +192,7 @@ paths:
             $ref: '#/definitions/models.ErrorMsg'
       summary: Get By Status
       tags:
-      - EndPoints
+      - Get Data
   /terminal:
     get:
       description: Get data by terminal id
@@ -202,7 +216,7 @@ paths:
             $ref: '#/definitions/models.ErrorMsg'
       summary: Get By Terminal Id
       tags:
-      - EndPoints
+      - Get Data
   /transaction/{id}:
     get:
       description: get data by transaction id
@@ -226,5 +240,5 @@ paths:
             $ref: '#/definitions/models.ErrorMsg'
       summary: Get By Transaction Id
       tags:
-      - EndPoints
+      - Get Data
 swagger: "2.0"
