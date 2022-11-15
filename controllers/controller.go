@@ -18,11 +18,12 @@ func PostData(c *gin.Context) {
 	config.ConnectDB()
 	tx := config.DB.MustBegin()
 
-	csvdata := csvparser.GetCSVData()
+	csvdata := csvparser.CSVparser()
 
-	for i := 0; i < len(csvdata); i++ {
-		tx.MustExec("INSERT INTO example VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) ON CONFLICT (transaction_id) DO NOTHING", csvdata[i].TransactionId, csvdata[i].RequestId, csvdata[i].TerminalId, csvdata[i].PartnerObjectId, csvdata[i].AmountTotal, csvdata[i].AmountOriginal, csvdata[i].CommissionPS, csvdata[i].CommissionClient, csvdata[i].CommissionProvider, csvdata[i].DateInput, csvdata[i].DatePost, csvdata[i].Status, csvdata[i].PaymentType, csvdata[i].PaymentNumber, csvdata[i].ServiceId, csvdata[i].Service, csvdata[i].PayeeId, csvdata[i].PayeeName, csvdata[i].PayeeBankMfo, csvdata[i].PayeeBankAccount, csvdata[i].PaymentNarrative)
+	for i := 1; i < len(csvdata); i++ {
+		tx.MustExec("INSERT INTO example VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21) ON CONFLICT (transaction_id) DO NOTHING", csvparser.ToInt(csvdata[i][0]), csvparser.ToInt(csvdata[i][1]), csvparser.ToInt(csvdata[i][2]), csvparser.ToInt(csvdata[i][3]), csvparser.ToFloat(csvdata[i][4]), csvparser.ToFloat(csvdata[i][5]), csvparser.ToFloat(csvdata[i][6]), csvparser.ToFloat(csvdata[i][7]), csvparser.ToFloat(csvdata[i][8]), csvdata[i][9], csvdata[i][10], csvdata[i][11], csvdata[i][12], csvdata[i][13], csvparser.ToInt(csvdata[i][14]), csvdata[i][15], csvparser.ToInt(csvdata[i][16]), csvdata[i][17], csvparser.ToInt(csvdata[i][18]), csvdata[i][19], csvdata[i][20])
 	}
+
 	tx.Commit()
 
 	c.JSON(200, gin.H{"message": "data uploaded"})

@@ -39,7 +39,7 @@ func TestGetAll(t *testing.T) {
 	w := httptest.NewRecorder()
 	config.ConnectDB()
 
-	csvdata := csvparser.GetCSVData()
+	csvdata := csvparser.CSVparser()
 	byteData, _ := json.Marshal(csvdata)
 
 	req, err := http.NewRequest("GET", "/api/all", bytes.NewBuffer(byteData))
