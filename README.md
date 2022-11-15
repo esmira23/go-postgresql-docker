@@ -71,6 +71,7 @@ go build
 
 | Method | Path                                | Description                                 |
 | ------ | ----------------------------------- | ------------------------------------------- |
+| `POST` | /api/post_data                      | Post all data                               |
 | `GET`  | /api/all                            | Get all data                                |
 | `GET`  | /api/transaction/:id                | Get data by transaction id                  |
 | `GET`  | /api/terminal?id=id_1,id_2,..,id_n  | Get data by terminal id (allow several ids) |
@@ -82,7 +83,7 @@ go build
 ## {•••} Swagger API
 
 Go to API Docs page: http://localhost:8000/swagger/index.html
-![Swagger](docs/Swagger.png)
+![Swagger](docs/swagger.png)
 
 ## Run all the Unit test cases
 
