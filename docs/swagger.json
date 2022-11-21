@@ -36,6 +36,18 @@
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -79,6 +91,18 @@
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -114,6 +138,18 @@
                         "description": "Not Found",
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }
@@ -151,6 +187,18 @@
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -169,6 +217,12 @@
                 "responses": {
                     "200": {
                         "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ErrorMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
@@ -208,6 +262,18 @@
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -244,6 +310,18 @@
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -279,6 +357,18 @@
                         "description": "Not Found",
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }

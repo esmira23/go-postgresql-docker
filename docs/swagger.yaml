@@ -75,6 +75,14 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/models.ErrorMsg'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
       summary: Get All
       tags:
       - Get Data
@@ -104,6 +112,14 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/models.ErrorMsg'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
       summary: Get By Post Date
       tags:
       - Get Data
@@ -128,6 +144,14 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/models.ErrorMsg'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
       summary: Get By Payment Narrative
       tags:
       - Get Data
@@ -152,6 +176,14 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/models.ErrorMsg'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
       summary: Get By Payment Type
       tags:
       - Get Data
@@ -164,6 +196,10 @@ paths:
       responses:
         "200":
           description: OK
+          schema:
+            $ref: '#/definitions/models.ErrorMsg'
+        "500":
+          description: Internal Server Error
           schema:
             $ref: '#/definitions/models.ErrorMsg'
       summary: Post All
@@ -190,6 +226,14 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/models.ErrorMsg'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
       summary: Get By Status
       tags:
       - Get Data
@@ -214,6 +258,14 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/models.ErrorMsg'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
       summary: Get By Terminal Id
       tags:
       - Get Data
@@ -238,6 +290,14 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/models.ErrorMsg'
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              items:
+                type: string
+              type: array
+            type: object
       summary: Get By Transaction Id
       tags:
       - Get Data

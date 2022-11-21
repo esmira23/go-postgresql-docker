@@ -43,6 +43,18 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -86,6 +98,18 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -121,6 +145,18 @@ const docTemplate = `{
                         "description": "Not Found",
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }
@@ -158,6 +194,18 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -176,6 +224,12 @@ const docTemplate = `{
                 "responses": {
                     "200": {
                         "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.ErrorMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
@@ -215,6 +269,18 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -251,6 +317,18 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
                         }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -286,6 +364,18 @@ const docTemplate = `{
                         "description": "Not Found",
                         "schema": {
                             "$ref": "#/definitions/models.ErrorMsg"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
                         }
                     }
                 }
