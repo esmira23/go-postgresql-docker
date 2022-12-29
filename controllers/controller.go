@@ -18,6 +18,7 @@ import (
 // @Failure 500 {object} models.ErrorMsg
 // @Router /post_data [post]
 func PostData(c *gin.Context) {
+
 	config.ConnectDB()
 	defer config.DB.Close()
 	tx := config.DB.MustBegin()
@@ -50,6 +51,7 @@ func PostData(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /all [get]
 func GetAll(c *gin.Context) {
+
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -66,6 +68,7 @@ func GetAll(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, items)
 	}
+
 }
 
 // @Summary Get By Transaction Id
@@ -79,6 +82,7 @@ func GetAll(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /transaction/{id} [get]
 func GetByTransactionId(c *gin.Context) {
+
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -96,6 +100,7 @@ func GetByTransactionId(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, items)
 	}
+
 }
 
 // @Summary Get By Terminal Id
@@ -109,6 +114,7 @@ func GetByTransactionId(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /terminal [get]
 func GetByTerminalId(c *gin.Context) {
+
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -127,6 +133,7 @@ func GetByTerminalId(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, items)
 	}
+
 }
 
 // @Summary Get By Status
@@ -140,6 +147,7 @@ func GetByTerminalId(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /status/{status} [get]
 func GetByStatus(c *gin.Context) {
+
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -158,6 +166,7 @@ func GetByStatus(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, items)
 	}
+
 }
 
 // @Summary Get By Payment Type
@@ -171,6 +180,7 @@ func GetByStatus(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /payment_type/{type} [get]
 func GetByPaymentType(c *gin.Context) {
+
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -189,6 +199,7 @@ func GetByPaymentType(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, items)
 	}
+
 }
 
 // @Summary Get By Post Date
@@ -203,6 +214,7 @@ func GetByPaymentType(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /date [get]
 func GetByDatePost(c *gin.Context) {
+
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -221,6 +233,7 @@ func GetByDatePost(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, items)
 	}
+
 }
 
 // @Summary Get By Payment Narrative
@@ -234,6 +247,7 @@ func GetByDatePost(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /payment_narrative/{narrative} [get]
 func GetByPaymentNarrative(c *gin.Context) {
+
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -252,4 +266,5 @@ func GetByPaymentNarrative(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, items)
 	}
+
 }

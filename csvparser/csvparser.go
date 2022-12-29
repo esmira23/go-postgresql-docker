@@ -35,4 +35,5 @@ func CSVparser() [][]string {
 	}
 
 	return allData
+
 }
