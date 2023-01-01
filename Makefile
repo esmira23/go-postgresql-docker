@@ -16,5 +16,8 @@ migrateup:
 migratedown:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5432/golang-postgresql-docker?sslmode=disable" -verbose down
 
+test: 
+	go test -v
+	
 .PHONY: build run createdb dropdb migrateup migratedown test 
 
