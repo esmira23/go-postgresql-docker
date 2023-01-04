@@ -25,7 +25,12 @@ func CSVparser() [][]string {
 		log.Fatal(err)
 	}
 
-	defer csvFile.Close()
+	defer func(csvFile *os.File) {
+		err := csvFile.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}(csvFile)
 
 	reader := csv.NewReader(csvFile)
 	allData, err := reader.ReadAll()

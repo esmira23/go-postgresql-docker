@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"github.com/jmoiron/sqlx"
+	"log"
 	"net/http"
 
 	"github.com/esmira23/go-postgresql-docker/config"
@@ -20,7 +22,14 @@ import (
 func PostData(c *gin.Context) {
 
 	config.ConnectDB()
-	defer config.DB.Close()
+	
+	defer func(DB *sqlx.DB) {
+		err := DB.Close()
+		if err != nil {
+			log.Fatal(err)
+		}
+	}(config.DB)
+
 	tx := config.DB.MustBegin()
 
 	csvdata := csvparser.CSVparser()
