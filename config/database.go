@@ -11,29 +11,28 @@ import (
 var DB *sqlx.DB
 
 const (
-	host     = "localhost"
+	host     = "postgresdb"
 	port     = "5432"
-	user     = "root"
+	user     = "esmira"
 	password = "secret"
-	dbname   = "golang-postgresql-docker"
+	dbname   = "esmira"
 	sslmode  = "disable"
 )
 
 func ConnectDB() {
+	var err error
 
 	psqconn := fmt.Sprintf("host = %s port=%s user=%s password=%s dbname=%s sslmode=%s", host, port, user, password, dbname, sslmode)
-	db, err := sqlx.Open("postgres", psqconn)
+	DB, err = sqlx.Open("postgres", psqconn)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = db.Ping()
+	err = DB.Ping()
 
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	DB = db
 
 }
