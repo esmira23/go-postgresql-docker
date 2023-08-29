@@ -1,9 +1,10 @@
 package controllers
 
 import (
-	"github.com/jmoiron/sqlx"
 	"log"
 	"net/http"
+
+	"github.com/jmoiron/sqlx"
 
 	"github.com/esmira23/go-postgresql-docker/config"
 	"github.com/esmira23/go-postgresql-docker/csvparser"
@@ -20,9 +21,8 @@ import (
 // @Failure 500 {object} models.ErrorMsg
 // @Router /post_data [post]
 func PostData(c *gin.Context) {
-
 	config.ConnectDB()
-	
+
 	defer func(DB *sqlx.DB) {
 		err := DB.Close()
 		if err != nil {
@@ -42,12 +42,12 @@ func PostData(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err)
-	} else {
-		c.JSON(http.StatusOK, models.ErrorMsg{
-			Message: "data uploaded",
-		})
+		return
 	}
 
+	c.JSON(http.StatusOK, models.ErrorMsg{
+		Message: "data uploaded",
+	})
 }
 
 // @Summary Get All
@@ -60,7 +60,6 @@ func PostData(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /all [get]
 func GetAll(c *gin.Context) {
-
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -70,14 +69,14 @@ func GetAll(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err)
+		return
 	} else if len(items) == 0 {
 		c.JSON(http.StatusNotFound, models.ErrorMsg{
 			Message: "data not found",
 		})
-	} else {
-		c.JSON(http.StatusOK, items)
+		return
 	}
-
+	c.JSON(http.StatusOK, items)
 }
 
 // @Summary Get By Transaction Id
@@ -91,7 +90,6 @@ func GetAll(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /transaction/{id} [get]
 func GetByTransactionId(c *gin.Context) {
-
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -102,14 +100,14 @@ func GetByTransactionId(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err)
+		return
 	} else if len(items) == 0 {
 		c.JSON(http.StatusNotFound, models.ErrorMsg{
 			Message: "data not found",
 		})
-	} else {
-		c.JSON(http.StatusOK, items)
+		return
 	}
-
+	c.JSON(http.StatusOK, items)
 }
 
 // @Summary Get By Terminal Id
@@ -123,7 +121,6 @@ func GetByTransactionId(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /terminal [get]
 func GetByTerminalId(c *gin.Context) {
-
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -135,14 +132,14 @@ func GetByTerminalId(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err)
+		return
 	} else if len(items) == 0 {
 		c.JSON(http.StatusNotFound, models.ErrorMsg{
 			Message: "data not found",
 		})
-	} else {
-		c.JSON(http.StatusOK, items)
+		return
 	}
-
+	c.JSON(http.StatusOK, items)
 }
 
 // @Summary Get By Status
@@ -168,13 +165,14 @@ func GetByStatus(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err)
+		return
 	} else if len(items) == 0 {
 		c.JSON(http.StatusNotFound, models.ErrorMsg{
 			Message: "data not found",
 		})
-	} else {
-		c.JSON(http.StatusOK, items)
+		return
 	}
+	c.JSON(http.StatusOK, items)
 
 }
 
@@ -201,14 +199,14 @@ func GetByPaymentType(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err)
+		return
 	} else if len(items) == 0 {
 		c.JSON(http.StatusNotFound, models.ErrorMsg{
 			Message: "data not found",
 		})
-	} else {
-		c.JSON(http.StatusOK, items)
+		return
 	}
-
+	c.JSON(http.StatusOK, items)
 }
 
 // @Summary Get By Post Date
@@ -223,7 +221,6 @@ func GetByPaymentType(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /date [get]
 func GetByDatePost(c *gin.Context) {
-
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -235,14 +232,14 @@ func GetByDatePost(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err)
+		return
 	} else if len(items) == 0 {
 		c.JSON(http.StatusNotFound, models.ErrorMsg{
 			Message: "data not found",
 		})
-	} else {
-		c.JSON(http.StatusOK, items)
+		return
 	}
-
+	c.JSON(http.StatusOK, items)
 }
 
 // @Summary Get By Payment Narrative
@@ -256,7 +253,6 @@ func GetByDatePost(c *gin.Context) {
 // @Failure 500 {object} map[string][]string
 // @Router /payment_narrative/{narrative} [get]
 func GetByPaymentNarrative(c *gin.Context) {
-
 	config.ConnectDB()
 	defer config.DB.Close()
 
@@ -268,12 +264,12 @@ func GetByPaymentNarrative(c *gin.Context) {
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, err)
+		return
 	} else if len(items) == 0 {
 		c.JSON(http.StatusNotFound, models.ErrorMsg{
 			Message: "data not found",
 		})
-	} else {
-		c.JSON(http.StatusOK, items)
+		return
 	}
-
+	c.JSON(http.StatusOK, items)
 }
