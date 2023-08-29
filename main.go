@@ -14,7 +14,7 @@ import (
 // @version 1.0
 // @description API Server
 
-// @host localhost:8000
+// @host localhost:8080
 // @BasePath /api
 
 // @license.name  Apache 2.0
@@ -25,7 +25,7 @@ func main() {
 	router := routers.SetUpRouter()
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	err := router.Run(":8000")
+	err := router.Run(":8080")
 
 	if err != nil {
 		log.Fatal(err)
