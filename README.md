@@ -4,14 +4,7 @@ Go RESTful API with PostgreSQL and Docker.
 
 ## Preparing to launch a project
 
-- Install [Golang](https://golang.org/doc/install)
 - Install [Docker](https://docs.docker.com/get-docker/)
-- Install [Migrate](https://github.com/golang-migrate/migrate/blob/master/cmd/migrate/README.md)
-- Install Postgres
-
-```bash
-docker pull postgres:15-alpine
-```
 
 ## Install & Run
 
@@ -20,24 +13,11 @@ docker pull postgres:15-alpine
 git clone https://github.com/esmira23/go-postgresql-docker.git
 ```
 
-Before running API server, you should build docker image and run it. Also you need to create database and use db/migration to create table.
-
 ```bash
 cd go-postgresql-docker
 # build and run docker-compose
-make build && make run
-# create db and migrate table
-make createdb && make migrateup
-```
-
-Now you can build and run project.
-
-```bash
-# build and run
-go build
-./go-postgresql-docker
-
-# API Endpoint : http://localhost:8000
+docker compose up -d --build
+#API http:/localhost:8080/
 ```
 
 ## Project tree
@@ -61,8 +41,8 @@ go build
 │   └── router.go                       // routers for application
 ├── models
 │   └── model.go                        // models for application
-├── Makefile
 ├── docker-compose.yml                  // docker compose file
+├── Dockerfile                          // Dockerfile
 ├── main_test.go                        // unit tests
 └── main.go
 ```
@@ -82,7 +62,7 @@ go build
 
 ## {•••} Swagger API
 
-Go to API Docs page: http://localhost:8000/swagger/index.html
+Go to API Docs page: http://localhost:8080/swagger/index.html
 ![Swagger](docs/swagger.png)
 
 ## Run all the Unit test cases
