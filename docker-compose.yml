@@ -1,14 +1,30 @@
 version: '3.8'
+volumes:
+  postgresdb_data:
+
+
 services:
-  db:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgresdb
+    
+  postgresdb:
     image: postgres:15-alpine
     container_name: postgres15
     ports:
       - 5432:5432
+    volumes: 
+      - ./db/migration/000001_init_schema.up.sql:/docker-entrypoint-initdb.d/postgresdb.sql
+      - postgresdb_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=secret 
-      - POSTGRES_BD=golang-postgresql-docker
-      - POSTGRES_HOST_AUTH_METHOD:trust
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD} 
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    restart: unless-stopped
     
   
